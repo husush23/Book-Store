@@ -2,7 +2,7 @@
 
 <div align="center">
 
-  <h3><b>Math Magician Project</b></h3>
+  <h3><b>Book Store Project</b></h3>
 
 </div>
 
@@ -32,7 +32,7 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Math Magician <a name="about-project"></a>
+# 📖 Book Store <a name="about-project"></a>
 
 **Book Store** is project built with React JS, it perfumes for adding and removing books
 
@@ -75,9 +75,9 @@
 
 <!-- LIVE DEMO -->
 
-## 🚀 Live Demo <a name="live-demo"></a>
+<!-- ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://husush23.github.io/Math-magician/)
+- [Live Demo Link](#) -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -94,7 +94,6 @@ In order to run this project you need to :
 - To have NodeJS installed
 - To have NPM installed also
 - Dependencies for basic React project
-- To install [Big](https://www.npmjs.com/package/big.js)
 
 ### Setup
 
@@ -102,7 +101,7 @@ Clone this repository to your desired folder:
 
 ```sh
   cd my-folder
-  git clone https://github.com/husush23/Math-magician.git
+  git clone https://github.com/husush23/Book-Store.git
 ```
 
 ### Install
