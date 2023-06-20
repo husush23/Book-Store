@@ -1,5 +1,6 @@
 /*eslint-disable*/
 import {createSlice} from '@reduxjs/toolkit';
+import {nanoid} from 'nanoid';
 
 const initialState = [
   {
@@ -10,7 +11,7 @@ const categorySlice = createSlice({
   name: 'category',
   initialState,
   reducers: {
-    checkCategory: state => ({
+    checkCategory: (state, action) => ({
       ...state,
       category: 'Under construction',
     }),
