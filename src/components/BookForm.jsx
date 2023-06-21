@@ -7,7 +7,7 @@ function BookForm() {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
-  const [category, setCategory] = useState(''); // Add category state
+  const [category, setCategory] = useState('');
 
   const handleChange = e => {
     if (e.target.name === 'title') {
@@ -15,7 +15,6 @@ function BookForm() {
     } else if (e.target.name === 'author') {
       setAuthor(e.target.value);
     } else if (e.target.name === 'category') {
-      // Handle category change
       setCategory(e.target.value);
     }
   };
@@ -24,10 +23,7 @@ function BookForm() {
     e.preventDefault();
 
     if (title && author && category) {
-      // Check if all fields are filled
       dispatch(addBook({title, author, category}));
-
-      // Reset input fields
       setTitle('');
       setAuthor('');
       setCategory('');
@@ -52,7 +48,7 @@ function BookForm() {
           onChange={handleChange}
           placeholder='Author'
         />
-        <select // Add select element for category
+        <select
           name='category'
           value={category}
           onChange={handleChange}
