@@ -1,6 +1,5 @@
-/*eslint-disable*/
-import {createSlice} from '@reduxjs/toolkit';
-import {nanoid} from 'nanoid';
+import { createSlice } from '@reduxjs/toolkit';
+import { nanoid } from 'nanoid';
 
 const initialState = {
   books: [
@@ -30,7 +29,7 @@ const bookSlice = createSlice({
   initialState,
   reducers: {
     addBook: (state, action) => {
-      const {title, author, category} = action.payload;
+      const { title, author, category } = action.payload;
       state.books.push({
         item_id: nanoid(),
         title,
@@ -40,11 +39,11 @@ const bookSlice = createSlice({
     },
     removeBook: (state, action) => {
       state.books = state.books.filter(
-        book => book.item_id !== action.payload.id
+        (book) => book.item_id !== action.payload.id,
       );
     },
   },
 });
 
 export default bookSlice.reducer;
-export const {addBook, removeBook} = bookSlice.actions;
+export const { addBook, removeBook } = bookSlice.actions;

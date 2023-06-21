@@ -1,9 +1,10 @@
-/*eslint-disable*/
 import React from 'react';
 import PropTypes from 'prop-types';
 
 function Book(props) {
-  const {title, author, id, handleDelete} = props;
+  const {
+    title, author, id, handleDelete,
+  } = props;
 
   const handleClick = () => {
     handleDelete(id);
@@ -13,8 +14,14 @@ function Book(props) {
     <div>
       <ul>
         <li>
-          {title} by {author}&nbsp;
-          <button onClick={handleClick}>Delete</button>
+          {title}
+          {' '}
+          by
+          {author}
+&nbsp;
+          <button onClick={handleClick} type="submit">
+            Delete
+          </button>
         </li>
       </ul>
     </div>

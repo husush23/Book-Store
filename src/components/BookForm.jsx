@@ -1,14 +1,13 @@
-/*eslint-disable*/
-import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {addBook} from '../redux/bookSlice';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addBook } from '../redux/bookSlice';
 
 function BookForm() {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     if (e.target.name === 'title') {
       setTitle(e.target.value);
     } else if (e.target.name === 'author') {
@@ -16,11 +15,11 @@ function BookForm() {
     }
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (title && author) {
-      dispatch(addBook({title, author}));
+      dispatch(addBook({ title, author }));
 
       // Reset input fields
       setTitle('');
@@ -33,20 +32,20 @@ function BookForm() {
       <h2>ADD NEW BOOK</h2>
       <form onSubmit={handleSubmit}>
         <input
-          type='text'
-          name='title'
+          type="text"
+          name="title"
           value={title}
           onChange={handleChange}
-          placeholder='Title'
+          placeholder="Title"
         />
         <input
-          type='text'
-          name='author'
+          type="text"
+          name="author"
           value={author}
           onChange={handleChange}
-          placeholder='Author'
+          placeholder="Author"
         />
-        <button type='submit'>Add Book</button>
+        <button type="submit">Add Book</button>
       </form>
     </div>
   );
