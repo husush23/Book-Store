@@ -2,7 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Book(props) {
-  const { title, author } = props;
+  const {
+    title, author, id, handleDelete, category,
+  } = props;
+
+  const handleClick = () => {
+    handleDelete(id);
+  };
+
   return (
     <div>
       <ul>
@@ -11,7 +18,12 @@ function Book(props) {
           {' '}
           by
           {author}
-          <button type="button">Delete</button>
+          {' '}
+          {category}
+          &nbsp;
+          <button onClick={handleClick} type="submit">
+            Delete
+          </button>
         </li>
       </ul>
     </div>
@@ -21,5 +33,9 @@ function Book(props) {
 Book.propTypes = {
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  handleDelete: PropTypes.func.isRequired,
+  category: PropTypes.string.isRequired,
 };
+
 export default Book;
