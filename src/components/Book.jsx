@@ -1,27 +1,28 @@
+/*eslint-disable*/
 import React from 'react';
 import PropTypes from 'prop-types';
+import {useDispatch} from 'react-redux';
+import {delBook} from '../redux/bookSlice';
 
 function Book(props) {
-  const {
-    title, author, id, handleDelete, category,
-  } = props;
+  const {title, author, id, category} = props;
+  const dispatch = useDispatch();
 
-  const handleClick = () => {
-    handleDelete(id);
+  const handleDel = async () => {
+    try {
+      await dispatch(delBook(id));
+      dispatch(getBooks());
+    } catch (error) {
+      return error;
+    }
   };
 
   return (
     <div>
       <ul>
         <li>
-          {title}
-          {' '}
-          by
-          {author}
-          {' '}
-          {category}
-          &nbsp;
-          <button onClick={handleClick} type="submit">
+          {title} by {author} {category}&nbsp;
+          <button onClick={handleDel} type='button'>
             Delete
           </button>
         </li>
@@ -34,7 +35,6 @@ Book.propTypes = {
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  handleDelete: PropTypes.func.isRequired,
   category: PropTypes.string.isRequired,
 };
 

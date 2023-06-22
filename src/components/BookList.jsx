@@ -1,28 +1,38 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+/*eslint-disable*/
+import React, {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 import Book from './Book';
 import BookForm from './BookForm';
-import { removeBook } from '../redux/bookSlice';
+import {getBooks, delBook} from '../redux/bookSlice';
 
 function BookList() {
-  const bookList = useSelector((state) => state.books.books);
+  // Books data
+  const {books, isLoading} = useSelector(state => state.books);
+
   const dispatch = useDispatch();
 
-  const handleDelete = (id) => {
-    dispatch(removeBook({ id }));
-  };
+  useEffect(() => {
+    dispatch(getBooks());
+  }, [dispatch]);
+
+  const booksList = Object.entries(books).reduce(
+    (bookArray, [id, listItem]) => {
+      const booksWithId = listItem.map(book => ({...book, id}));
+      return [...bookArray, ...booksWithId];
+    },
+    []
+  );
 
   return (
     <div>
       <ul>
-        {bookList.map((book) => (
+        {booksList.map(book => (
           <Book
-            key={book.item_id}
+            key={book.id}
             title={book.title}
             author={book.author}
             category={book.category}
-            id={book.item_id}
-            handleDelete={handleDelete}
+            id={book.id}
           />
         ))}
       </ul>
