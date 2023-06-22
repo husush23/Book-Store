@@ -1,15 +1,15 @@
-/*eslint-disable*/
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import {nanoid} from 'nanoid';
-const url = `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/Pi1iIe9jypp8kdtYJnwF/books`;
+import { nanoid } from 'nanoid';
+
+const url = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/Pi1iIe9jypp8kdtYJnwF/books';
 
 const initialState = {
   books: [],
   isLoading: false,
 };
 
-export const getBooks = createAsyncThunk('books/getBooks', async thunk => {
+export const getBooks = createAsyncThunk('books/getBooks', async (thunk) => {
   try {
     const response = await axios(url);
     return response.data;
@@ -34,7 +34,7 @@ export const postBook = createAsyncThunk(
     } catch (error) {
       return thunk.rejectWithValue('Something went wrong');
     }
-  }
+  },
 );
 
 export const delBook = createAsyncThunk('book/delBook', async (id, thunk) => {
@@ -51,7 +51,7 @@ const bookSlice = createSlice({
   initialState,
   reducers: {
     addBook: (state, action) => {
-      const {title, author, category} = action.payload;
+      const { title, author, category } = action.payload;
       state.books.push({
         item_id: nanoid(),
         title,
@@ -61,12 +61,12 @@ const bookSlice = createSlice({
     },
     removeBook: (state, action) => {
       state.books = state.books.filter(
-        book => book.item_id !== action.payload.id
+        (book) => book.item_id !== action.payload.id,
       );
     },
   },
-  extraReducers: builder => {
-    builder.addCase(getBooks.pending, state => ({
+  extraReducers: (builder) => {
+    builder.addCase(getBooks.pending, (state) => ({
       ...state,
       isLoading: true,
     }));
@@ -75,31 +75,31 @@ const bookSlice = createSlice({
       isLoading: false,
       books: action.payload,
     }));
-    builder.addCase(getBooks.rejected, state => ({
+    builder.addCase(getBooks.rejected, (state) => ({
       ...state,
       isLoading: false,
     }));
-    builder.addCase(postBook.pending, state => ({
+    builder.addCase(postBook.pending, (state) => ({
       ...state,
       isLoading: true,
     }));
-    builder.addCase(postBook.fulfilled, state => ({
+    builder.addCase(postBook.fulfilled, (state) => ({
       ...state,
       isLoading: false,
     }));
-    builder.addCase(postBook.rejected, state => ({
+    builder.addCase(postBook.rejected, (state) => ({
       ...state,
       isLoading: false,
     }));
-    builder.addCase(delBook.pending, state => ({
+    builder.addCase(delBook.pending, (state) => ({
       ...state,
       isLoading: true,
     }));
-    builder.addCase(delBook.fulfilled, state => ({
+    builder.addCase(delBook.fulfilled, (state) => ({
       ...state,
       isLoading: false,
     }));
-    builder.addCase(delBook.rejected, state => ({
+    builder.addCase(delBook.rejected, (state) => ({
       ...state,
       isLoading: false,
     }));
@@ -107,4 +107,4 @@ const bookSlice = createSlice({
 });
 
 export default bookSlice.reducer;
-export const {addBook, removeBook} = bookSlice.actions;
+export const { addBook, removeBook } = bookSlice.actions;
