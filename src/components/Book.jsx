@@ -2,19 +2,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {useDispatch} from 'react-redux';
-import {delBook} from '../redux/bookSlice';
+import {delBook, getBooks} from '../redux/bookSlice';
 
 function Book(props) {
   const {title, author, id, category} = props;
   const dispatch = useDispatch();
 
   const handleDel = async () => {
-    try {
-      await dispatch(delBook(id));
-      dispatch(getBooks());
-    } catch (error) {
-      return error;
-    }
+    dispatch(delBook(id));
+    dispatch(getBooks());
   };
 
   return (
@@ -22,7 +18,7 @@ function Book(props) {
       <ul>
         <li>
           {title} by {author} {category}&nbsp;
-          <button onClick={handleDel} type='button'>
+          <button onClick={() => handleDel()} type='button'>
             Delete
           </button>
         </li>

@@ -15,13 +15,10 @@ function BookList() {
     dispatch(getBooks());
   }, [dispatch]);
 
-  const booksList = Object.entries(books).reduce(
-    (bookArray, [id, listItem]) => {
-      const booksWithId = listItem.map(book => ({...book, id}));
-      return [...bookArray, ...booksWithId];
-    },
-    []
-  );
+  const booksList = Object.entries(books).reduce((bookArray, [id, items]) => {
+    const booksIds = items.map(book => ({...book, id}));
+    return [...bookArray, ...booksIds];
+  }, []);
 
   return (
     <div>

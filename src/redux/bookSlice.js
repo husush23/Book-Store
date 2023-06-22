@@ -37,10 +37,10 @@ export const postBook = createAsyncThunk(
   }
 );
 
-export const delBook = createAsyncThunk('books/delBook', async (id, thunk) => {
+export const delBook = createAsyncThunk('book/delBook', async (id, thunk) => {
   try {
     const response = await axios.delete(`${url}/${id}`);
-    return id;
+    return response.data;
   } catch (error) {
     return thunk.rejectWithValue('Something went wrong');
   }
