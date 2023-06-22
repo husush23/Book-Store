@@ -1,28 +1,50 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 import { nanoid } from 'nanoid';
 
+const url = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/Pi1iIe9jypp8kdtYJnwF/books';
+
 const initialState = {
-  books: [
-    {
-      item_id: 'item1',
-      title: 'The Great Gatsby',
-      author: 'John Smith',
-      category: 'Fiction',
-    },
-    {
-      item_id: 'item2',
-      title: 'Anna Karenina',
-      author: 'Leo Tolstoy',
-      category: 'Fiction',
-    },
-    {
-      item_id: 'item3',
-      title: 'The Selfish Gene',
-      author: 'Richard Dawkins',
-      category: 'Nonfiction',
-    },
-  ],
+  books: [],
+  isLoading: false,
 };
+
+export const getBooks = createAsyncThunk('books/getBooks', async (thunk) => {
+  try {
+    const response = await axios(url);
+    return response.data;
+  } catch (error) {
+    return thunk.rejectWithValue('Something went wrong');
+  }
+});
+
+export const postBook = createAsyncThunk(
+  'book/postBook',
+  async (book, thunk) => {
+    const newBook = {
+      title: book[0],
+      author: book[1],
+      item_id: nanoid(),
+      category: book[2],
+    };
+
+    try {
+      const response = await axios.post(url, newBook);
+      return response.data;
+    } catch (error) {
+      return thunk.rejectWithValue('Something went wrong');
+    }
+  },
+);
+
+export const delBook = createAsyncThunk('book/delBook', async (id, thunk) => {
+  try {
+    const response = await axios.delete(`${url}/${id}`);
+    return response.data;
+  } catch (error) {
+    return thunk.rejectWithValue('Something went wrong');
+  }
+});
 
 const bookSlice = createSlice({
   name: 'book',
@@ -42,6 +64,45 @@ const bookSlice = createSlice({
         (book) => book.item_id !== action.payload.id,
       );
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(getBooks.pending, (state) => ({
+      ...state,
+      isLoading: true,
+    }));
+    builder.addCase(getBooks.fulfilled, (state, action) => ({
+      ...state,
+      isLoading: false,
+      books: action.payload,
+    }));
+    builder.addCase(getBooks.rejected, (state) => ({
+      ...state,
+      isLoading: false,
+    }));
+    builder.addCase(postBook.pending, (state) => ({
+      ...state,
+      isLoading: true,
+    }));
+    builder.addCase(postBook.fulfilled, (state) => ({
+      ...state,
+      isLoading: false,
+    }));
+    builder.addCase(postBook.rejected, (state) => ({
+      ...state,
+      isLoading: false,
+    }));
+    builder.addCase(delBook.pending, (state) => ({
+      ...state,
+      isLoading: true,
+    }));
+    builder.addCase(delBook.fulfilled, (state) => ({
+      ...state,
+      isLoading: false,
+    }));
+    builder.addCase(delBook.rejected, (state) => ({
+      ...state,
+      isLoading: false,
+    }));
   },
 });
 

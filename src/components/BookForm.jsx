@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addBook } from '../redux/bookSlice';
+import { postBook, getBooks } from '../redux/bookSlice';
 
 function BookForm() {
   const dispatch = useDispatch();
@@ -22,10 +22,14 @@ function BookForm() {
     e.preventDefault();
 
     if (title && author && category) {
-      dispatch(addBook({ title, author, category }));
-      setTitle('');
-      setAuthor('');
-      setCategory('');
+      dispatch(postBook([title, author, category]))
+        .then(() => {
+          dispatch(getBooks());
+          setTitle('');
+          setAuthor('');
+          setCategory('');
+        })
+        .catch((error) => error);
     }
   };
 
