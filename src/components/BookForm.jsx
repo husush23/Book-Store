@@ -34,37 +34,41 @@ function BookForm() {
   };
 
   return (
-    <div>
-      <h2>ADD NEW BOOK</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="title"
-          value={title}
-          onChange={handleChange}
-          placeholder="Title"
-        />
-        <input
-          type="text"
-          name="author"
-          value={author}
-          onChange={handleChange}
-          placeholder="Author"
-        />
-        <select
-          name="category"
-          value={category}
-          onChange={handleChange}
-          placeholder="Category"
-        >
-          <option value="">Select Category</option>
-          <option value="science">Science</option>
-          <option value="fiction">Fiction</option>
-          <option value="math">Math</option>
-          <option value="story">Story</option>
-        </select>
-        <button type="submit">Add Book</button>
-      </form>
+    <div className="book-form">
+      <div>
+        <h2>ADD NEW BOOK</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="inputs">
+            <input
+              type="text"
+              name="title"
+              value={title}
+              onChange={handleChange}
+              placeholder="Title"
+            />
+            <input
+              type="text"
+              name="author"
+              value={author}
+              onChange={handleChange}
+              placeholder="Author"
+            />
+            <select
+              name="category"
+              value={category}
+              onChange={handleChange}
+              placeholder="Category"
+            >
+              <option value="">Select Category</option>
+              <option value="science">Science</option>
+              <option value="fiction">Fiction</option>
+              <option value="math">Math</option>
+              <option value="Economy">Economy</option>
+            </select>
+            <button type="submit">ADD BOOK</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

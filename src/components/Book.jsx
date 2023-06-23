@@ -15,21 +15,48 @@ function Book(props) {
   };
 
   return (
-    <div>
-      <ul>
-        <li>
-          {title}
-          {' '}
-          by
-          {author}
-          {' '}
-          {category}
-&nbsp;
-          <button onClick={() => handleDel()} type="button">
-            Delete
+    <div className="book">
+      <div className="p-1">
+        <div className="titles">
+          <h4 className="category">{category}</h4>
+          <h2 className="title">{title}</h2>
+          <p className="author">{author}</p>
+        </div>
+        <div className="buttons">
+          <button className="btn comment-btn" type="submit">
+            Comment
           </button>
-        </li>
-      </ul>
+          <button
+            onClick={() => handleDel()}
+            type="button"
+            className="btn remove-btn"
+          >
+            Remove
+          </button>
+          <button className="btn edit-btn" type="submit">
+            Edit
+          </button>
+        </div>
+      </div>
+      <div className="p-2">
+        <div className="circle">
+          <svg>
+            <circle cx="30" cy="30" r="30" />
+            <circle cx="30" cy="30" r="30" />
+          </svg>
+        </div>
+        <div className="infos">
+          <h3>64%</h3>
+          <span>completed</span>
+        </div>
+      </div>
+      <div className="p-3">
+        <p className="chpt">CURRENT CHAPTER</p>
+        <p className="intro">INTRODUCTION</p>
+        <button className="btn-update" type="submit">
+          UPDATE PROCCESS
+        </button>
+      </div>
     </div>
   );
 }

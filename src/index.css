@@ -1,3 +1,275 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #fafafa;
+}
+
+nav {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  border: solid 1px #e8e8e8;
+}
+
+nav .left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  height: 50px;
+  margin-bottom: 30px;
+  margin-left: 30px;
+}
+
+.logo {
+  color: #0290ff;
+  font-family: 'Montserrat-Bold', sans-serif;
+}
+
+ul {
+  list-style: none;
+  font-family: 'Montserrat', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #121212;
+  font-family: 'Montserrat', sans-serif;
+  opacity: 0.5;
+}
+
+a.active {
+  opacity: 1;
+}
+
+.fa-user {
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  color: #0290ff;
+  margin-bottom: 20px;
+  padding: 10px;
+  margin-right: 30px;
+}
+
+.books {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.book {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  border: solid 1px #e8e8e8;
+  height: 160px;
+}
+
+.p-1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding-left: 40px;
+}
+
+.titles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+
+.titles > .category {
+  margin-bottom: 8px;
+  font-family: 'Montserrat', sans-serif;
+  color: #121212;
+  opacity: 0.5;
+}
+
+.titles > .title {
+  font-family: 'Roboto Slab', serif;
+  color: #121212;
+}
+
+.titles > .author {
+  font-family: 'Montserrat', sans-serif;
+  color: #4386bf;
+}
+
+.buttons {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+}
+
+.btn {
+  border: none;
+  font-family: 'Roboto Slab', serif;
+  color: #4386bf;
+  background-color: #fff;
+  font-size: 15px;
+}
+
+.comment-btn {
+  border-right: 0.5px solid #e8e8e8;
+  padding-right: 10px;
+}
+
+.remove-btn {
+  padding-right: 10px;
+  border-right: 2px solid #e8e8e872;
+  padding-left: 10px;
+}
+
+.edit-btn {
+  padding-left: 10px;
+}
+
+/* p-2 for tomorrow */
+
+.p-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.p-2 svg {
+  width: 70px;
+  height: 70px;
+}
+
+.p-2 svg circle {
+  margin-top: 20px;
+  width: 70px;
+  height: 70px;
+  fill: none;
+  stroke: #307bbe;
+  stroke-width: 4;
+  transform: translate(5px, 5px);
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  stroke-linecap: round;
+}
+
+.p-2 svg circle:nth-child(1) {
+  stroke-dashoffset: 0;
+  stroke: #ddd;
+}
+
+.p-2 svg circle:nth-child(2) {
+  stroke-dashoffset: 100;
+  stroke: #307bbe;
+}
+
+.p-2 .infos {
+  display: flex;
+  flex-direction: column;
+  left: 75%;
+  position: absolute;
+  margin-bottom: 16px;
+  margin-left: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.p-2 .infos span {
+  font-family: 'Montserrat', sans-serif;
+  color: #121212;
+  opacity: 0.5;
+}
+
+.p-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 10px;
+  font-family: 'Roboto Slab', serif;
+  border-left: solid 1px #e8e8e8;
+  padding-left: 40px;
+  padding-right: 160px;
+}
+
+.chpt {
+  color: #121212;
+  opacity: 0.5;
+}
+
+.intro {
+  color: #121212;
+}
+
+.btn-update {
+  background-color: #0290ff;
+  border: none;
+  width: 150px;
+  height: 30px;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.book-form {
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+  width: 95%;
+}
+
+.book-form h2 {
+  font-family: 'Montserrat-Bold', sans-serif;
+  color: #888;
+  align-self: start;
+  margin: 10px 10px 20px;
+}
+
+form {
+  display: flex;
+  gap: 30px;
+  text-align: left;
+}
+
+input {
+  width: 440px;
+  margin-right: 20px;
+}
+
+select {
+  width: 190px;
+}
+
+.book-form input,
+.book-form select {
+  border: solid 1px #e8e8e8;
+  border-radius: 4px;
+  box-shadow: 0 0 60px 0 var(--black-5);
+  height: 30px;
+  text-indent: 15px;
+}
+
+.book-form button {
+  background-color: #0290ff;
+  color: #fff;
+  border: none;
+  height: 25px;
+  padding: 3px;
+  width: 100px;
+  border-radius: 3px;
+  margin-left: 40px;
 }
