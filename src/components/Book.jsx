@@ -41,20 +41,20 @@ function Book(props) {
       <div className="p-2">
         <div className="circle">
           <svg>
-            <circle cx="20" cy="20" r="20" />
-            <circle cx="20" cy="20" r="20" />
+            <circle cx="30" cy="30" r="30" />
+            <circle cx="30" cy="30" r="30" />
           </svg>
         </div>
         <div className="infos">
-          <h3>8%</h3>
+          <h3>64%</h3>
           <span>completed</span>
         </div>
       </div>
       <div className="p-3">
-        <p className="chpt">Current chapter</p>
-        <p className="intro">Introduction</p>
+        <p className="chpt">CURRENT CHAPTER</p>
+        <p className="intro">INTRODUCTION</p>
         <button className="btn-update" type="submit">
-          Update process
+          UPDATE PROCCESS
         </button>
       </div>
     </div>

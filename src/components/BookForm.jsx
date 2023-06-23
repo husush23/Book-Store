@@ -35,36 +35,40 @@ function BookForm() {
 
   return (
     <div className="book-form">
-      <h2>ADD NEW BOOK</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="title"
-          value={title}
-          onChange={handleChange}
-          placeholder="Title"
-        />
-        <input
-          type="text"
-          name="author"
-          value={author}
-          onChange={handleChange}
-          placeholder="Author"
-        />
-        <select
-          name="category"
-          value={category}
-          onChange={handleChange}
-          placeholder="Category"
-        >
-          <option value="">Select Category</option>
-          <option value="Science">Science</option>
-          <option value="Fiction">Fiction</option>
-          <option value="Math">Math</option>
-          <option value="Economy">Economy</option>
-        </select>
-        <button type="submit">ADD BOOK</button>
-      </form>
+      <div>
+        <h2>ADD NEW BOOK</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="inputs">
+            <input
+              type="text"
+              name="title"
+              value={title}
+              onChange={handleChange}
+              placeholder="Title"
+            />
+            <input
+              type="text"
+              name="author"
+              value={author}
+              onChange={handleChange}
+              placeholder="Author"
+            />
+            <select
+              name="category"
+              value={category}
+              onChange={handleChange}
+              placeholder="Category"
+            >
+              <option value="">Select Category</option>
+              <option value="science">Science</option>
+              <option value="fiction">Fiction</option>
+              <option value="math">Math</option>
+              <option value="Economy">Economy</option>
+            </select>
+            <button type="submit">ADD BOOK</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
