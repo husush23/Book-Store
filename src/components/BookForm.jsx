@@ -1,7 +1,6 @@
-/*eslint-disable*/
-import {useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {postBook, getBooks} from '../redux/bookSlice';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { postBook, getBooks } from '../redux/bookSlice';
 
 function BookForm() {
   const dispatch = useDispatch();
@@ -9,7 +8,7 @@ function BookForm() {
   const [author, setAuthor] = useState('');
   const [category, setCategory] = useState('');
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     if (e.target.name === 'title') {
       setTitle(e.target.value);
     } else if (e.target.name === 'author') {
@@ -19,7 +18,7 @@ function BookForm() {
     }
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (title && author && category) {
@@ -30,41 +29,41 @@ function BookForm() {
           setAuthor('');
           setCategory('');
         })
-        .catch(error => error);
+        .catch((error) => error);
     }
   };
 
   return (
-    <div className='book-form'>
+    <div className="book-form">
       <h2>ADD NEW BOOK</h2>
       <form onSubmit={handleSubmit}>
         <input
-          type='text'
-          name='title'
+          type="text"
+          name="title"
           value={title}
           onChange={handleChange}
-          placeholder='Title'
+          placeholder="Title"
         />
         <input
-          type='text'
-          name='author'
+          type="text"
+          name="author"
           value={author}
           onChange={handleChange}
-          placeholder='Author'
+          placeholder="Author"
         />
         <select
-          name='category'
+          name="category"
           value={category}
           onChange={handleChange}
-          placeholder='Category'
+          placeholder="Category"
         >
-          <option value=''>Select Category</option>
-          <option value='science'>Science</option>
-          <option value='fiction'>Fiction</option>
-          <option value='math'>Math</option>
-          <option value='Economy'>Economy</option>
+          <option value="">Select Category</option>
+          <option value="Science">Science</option>
+          <option value="Fiction">Fiction</option>
+          <option value="Math">Math</option>
+          <option value="Economy">Economy</option>
         </select>
-        <button type='submit'>ADD BOOK</button>
+        <button type="submit">ADD BOOK</button>
       </form>
     </div>
   );
